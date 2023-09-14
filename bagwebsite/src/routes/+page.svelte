@@ -1,13 +1,33 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<!-- Script -->
+<script>
+	import { goto } from '$app/navigation';
 
+	function goToLoginPage() {
+		goto('/login');
+	}
+	function goToRegisterPage() {
+		goto('/register');
+	}
+</script>
+
+<!-- HTML -->
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-5">
-		<h1 class="h1">Let's get cracking bones!</h1>
-		<p>Start by exploring:</p>
-		<ul>
-			<li><code class="code">/src/routes/+layout.svelte</code> - barebones layout, the CSS import order is critical!</li>
-			<li><code class="code">/src/app.postcss</code> - minimal css to make the page full screen, may not be relevant for your project</li>
-			<li><code class="code">/src/routes/+page.svelte</code> - this page, you can replace the contents</li>
-		</ul>
+		<h1 class="h1">Welcome to [AppName]!</h1>
+		<div class="card">
+			<header class="card-header">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+				laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+				voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+				cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</header>
+		</div>
+		<div>
+			<button type="button" class="btn variant-filled" on:click={goToLoginPage}> Login </button>
+			<button type="button" class="btn variant-filled" on:click={goToRegisterPage}>
+				Register
+			</button>
+		</div>
 	</div>
 </div>
