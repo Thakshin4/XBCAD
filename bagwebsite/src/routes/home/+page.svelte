@@ -7,7 +7,7 @@
 <AppBar>
 	<svelte:fragment slot="trail">
 		<li><a href="/home">Home</a></li>
-		<li><a href="/products">Browse Product Calologue</a></li>
+		<li><a href="/products">Browse Products</a></li>
 		<li><a href="/requests">Request Products</a></li>
 		<li><a href="/">Logout</a></li>
 	</svelte:fragment>
