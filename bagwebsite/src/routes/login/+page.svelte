@@ -1,25 +1,19 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { AppBar } from '@skeletonlabs/skeleton';
+	import { LOGGED_IN } from '../../lib/global';
+
 	let email = '';
 	let password = '';
 	let msg = '';
 
 	// User login
 	function handleLogin() {
+		LOGGED_IN.set(true);
 		goto('/home');
 	}
 </script>
 
 <!-- HTML -->
-<AppBar>
-	<svelte:fragment slot="trail">
-		<li><a href="/home">Test Login as Customer</a></li>
-		<li><a href="/add-product">Test Login as Employee</a></li>
-		<li><a href="/add-product">Test Login as Owner</a></li>
-	</svelte:fragment>
-</AppBar>
-
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-5">
 		<h1 class="h1">Login</h1>

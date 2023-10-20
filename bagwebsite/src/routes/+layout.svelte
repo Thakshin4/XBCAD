@@ -8,6 +8,22 @@
 	import '../app.postcss';
 	import { AppShell, AppBar, Avatar } from '@skeletonlabs/skeleton';
 	import Logo from '$lib/Images/logo.png';
+
+	import { LOGGED_IN, USER_ROLE } from '../lib/global';
+
+	let currentUserRole: string;
+	USER_ROLE.subscribe((value) => {
+		currentUserRole = value;
+	});
+
+	let isLoggedIn: boolean;
+	LOGGED_IN.subscribe((value) => {
+		isLoggedIn = value;
+	});
+
+	function handleLogout() {
+		LOGGED_IN.set(false);
+	}
 </script>
 
 <!-- HTML -->
@@ -25,6 +41,26 @@
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
+
+	<!--AppBar-->
+
+	{#if isLoggedIn}
+		<AppBar>
+			<svelte:fragment slot="trail">
+				<li><a href="/home">Home</a></li>
+				<li><a href="/products">Browse Products</a></li>
+				<li><a href="/requests">Request Products</a></li>
+				{#if currentUserRole === 'Owner' || currentUserRole === 'Employee'}
+					<li><a href="/add-products">Add Products</a></li>
+				{/if}
+				{#if currentUserRole === 'Owner'}
+					<li><a href="/add-employees">Add Employees</a></li>
+				{/if}
+				<li><a href="/" on:click={handleLogout}>Logout</a></li>
+			</svelte:fragment>
+		</AppBar>
+	{/if}
+
 	<!-- Router Slot -->
 	<slot />
 	<!-- Page Footer -->
