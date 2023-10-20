@@ -1,5 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
+	let name = '';
 	let email = '';
 	let password = '';
 	let msg = '';
@@ -20,6 +21,9 @@
 		<div class="card p-4">
 			<section class="p-4">
 				<form on:submit|preventDefault={handleRegister}>
+					<label for="label">Name:</label><br />
+					<input class="input" type="text" id="name" bind:value={name} /><br /><br />
+
 					<label for="label">Email:</label><br />
 					<input class="input" type="text" id="email" bind:value={email} /><br /><br />
 
