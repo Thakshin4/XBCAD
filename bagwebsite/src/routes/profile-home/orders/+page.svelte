@@ -6,7 +6,7 @@
 <!-- HTML -->
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-5">
-		<h1 class="h1">Requests Page</h1>
+		<h1 class="h1">Orders</h1>
 
 		<div class="card p-4">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -15,5 +15,6 @@
 			voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
 			non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		</div>
+		<div class="flex space-x-4" />
 	</div>
 </div>
