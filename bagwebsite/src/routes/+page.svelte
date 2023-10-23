@@ -1,5 +1,6 @@
 <!-- Script -->
 <script>
+	import { APP_NAME, LOGGED_IN } from '../lib/global';
 	import { goto } from '$app/navigation';
 
 	function goToLoginPage() {
@@ -13,7 +14,7 @@
 <!-- HTML -->
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-5">
-		<h1 class="h1">Welcome to [AppName]!</h1>
+		<h1 class="h1">Welcome to {APP_NAME}!</h1>
 		<div class="card">
 			<header class="card-header">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -24,10 +25,12 @@
 			</header>
 		</div>
 		<div>
-			<button type="button" class="btn variant-filled" on:click={goToLoginPage}> Login </button>
-			<button type="button" class="btn variant-filled" on:click={goToRegisterPage}>
-				Register
-			</button>
+			{#if !$LOGGED_IN}
+				<button type="button" class="btn variant-filled" on:click={goToLoginPage}> Login </button>
+				<button type="button" class="btn variant-filled" on:click={goToRegisterPage}>
+					Register
+				</button>
+			{/if}
 		</div>
 	</div>
 </div>

@@ -8,6 +8,7 @@
 	import '../app.postcss';
 	import { AppShell, AppBar, Avatar } from '@skeletonlabs/skeleton';
 	import Logo from '$lib/Images/logo.png';
+	import { APP_NAME } from '../lib/global';
 
 	import { LOGGED_IN, USER_ROLE } from '../lib/global';
 
@@ -35,9 +36,12 @@
 			<svelte:fragment slot="lead">
 				<a href="/"><Avatar src={Logo} width="w-10" rounded="rounded-full" /></a>
 			</svelte:fragment>
-			<strong class="text-xl uppercase">[AppName]</strong>
+			<strong class="text-xl uppercase">{APP_NAME}</strong>
 			<svelte:fragment slot="trail">
 				<!-- AppBar links -->
+				{#if $LOGGED_IN}
+					Hello, {$USER_ROLE}
+				{/if}
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
@@ -56,6 +60,7 @@
 				{#if currentUserRole === 'Owner'}
 					<li><a href="/add-employees">Add Employees</a></li>
 				{/if}
+				<li><a href="/profile-home">Profile</a></li>
 				<li><a href="/" on:click={handleLogout}>Logout</a></li>
 			</svelte:fragment>
 		</AppBar>
@@ -66,7 +71,7 @@
 	<!-- Page Footer -->
 	<svelte:fragment slot="footer">
 		<AppBar>
-			[AppName] | 2023 | This Website was made possible thanks to
+			{APP_NAME} | 2023 | This Website was made possible thanks to
 			<a class="anchor" href="https://kit.svelte.dev">SvelteKit</a>,
 			<a class="anchor" href="https://www.skeleton.dev">SkeletonUI</a> and
 			<a class="anchor" href="https://supabase.com">Supabase</a>
