@@ -39,11 +39,17 @@ const getProductById = async (productId: unknown) => {
 
 // Database functions
 
-// Add a new product
-const addProduct = async (productData: unknown) => {
-  const { data, error } = await supabase.from("products").upsert([productData]);
+// Modify the addProduct function
+const addProduct = async (productData: { [x: string]: unknown; name?: string; description?: string; price?: number; category?: string; image_path?: string; ID?: unknown; }) => {
+  // Omit the 'ID' property from the product data
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { ID, ...restOfProductData } = productData;
+
+  const { data, error } = await supabase.from('products').upsert([restOfProductData]);
   return { data, error };
 };
+
+
 
 // Update an existing product
 const updateProduct = async (productData: unknown, productId: number) => {
