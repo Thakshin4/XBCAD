@@ -53,7 +53,6 @@
 			<svelte:fragment slot="trail">
 				<li><a href="/home">Home</a></li>
 				<li><a href="/products">Browse Products</a></li>
-				<li><a href="/requests">Request Products</a></li>
 				{#if currentUserRole === 'Owner' || currentUserRole === 'Employee'}
 					<li><a href="/add-products">Add Products</a></li>
 				{/if}

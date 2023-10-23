@@ -15,7 +15,7 @@
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-5">
 		<h1 class="h1">Welcome to {APP_NAME}!</h1>
-		<div class="card">
+		<div class="card p-4">
 			<header class="card-header">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -26,8 +26,10 @@
 		</div>
 		<div>
 			{#if !$LOGGED_IN}
-				<button type="button" class="btn variant-filled" on:click={goToLoginPage}> Login </button>
-				<button type="button" class="btn variant-filled" on:click={goToRegisterPage}>
+				<button type="button" class="btn variant-filled m-2" on:click={goToLoginPage}>
+					Login
+				</button>
+				<button type="button" class="btn variant-filled m-2" on:click={goToRegisterPage}>
 					Register
 				</button>
 			{/if}
