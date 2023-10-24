@@ -63,6 +63,7 @@
 					<li><a href="/add-employees">Add Employees</a></li>
 				{/if}
 				<li><a href="/profile-home">Profile</a></li>
+				<li><a href="/cart">Cart</a></li>
 				<li><a href="/" on:click={handleLogout}>Logout</a></li>
 			</svelte:fragment>
 		</AppBar>

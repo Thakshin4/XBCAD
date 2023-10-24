@@ -4,10 +4,12 @@
 	import { onMount } from 'svelte';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
+	import { SHOPPING_CART } from '../../../lib/global';
 
 	export let data;
 
 	let id = data.data.product;
+	let quantity = 0
 	/**
 	 * @type {{ name: any; image_path: any; description: any; price: number; category: any; } | null}
 	 */
@@ -26,7 +28,20 @@
 		isLoading = false;
 	});
 
-	function addToCart() {}
+	function addToCart() {
+		
+
+
+// @ts-ignore
+function addToCart(id, quantity) {
+  if (SHOPPING_CART.has(id)) {
+    SHOPPING_CART.set(id, SHOPPING_CART.get(id) + quantity);
+  } else {
+    SHOPPING_CART.set(id, quantity);
+  }
+}
+
+	}
 </script>
 
 <!-- HTML -->
