@@ -9,7 +9,7 @@
 	export let data;
 
 	let id = data.data.product;
-	let quantity = 0
+	let quantity = 1;
 	/**
 	 * @type {{ name: any; image_path: any; description: any; price: number; category: any; } | null}
 	 */
@@ -28,19 +28,16 @@
 		isLoading = false;
 	});
 
+	// Add items to the shopping cart
 	function addToCart() {
-		
-
-
-// @ts-ignore
-function addToCart(id, quantity) {
-  if (SHOPPING_CART.has(id)) {
-    SHOPPING_CART.set(id, SHOPPING_CART.get(id) + quantity);
-  } else {
-    SHOPPING_CART.set(id, quantity);
-  }
-}
-
+		SHOPPING_CART.update((cart) => {
+			if (cart.has(id)) {
+				cart.set(id, cart.get(id) + quantity);
+			} else {
+				cart.set(id, quantity);
+			}
+			return new Map(cart); // Make sure to return a new Map to trigger updates
+		});
 	}
 </script>
 
