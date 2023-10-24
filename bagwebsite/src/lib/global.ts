@@ -5,7 +5,7 @@ import { persistBrowserSession } from '@macfja/svelte-persistent-store';
 export const LOGGED_IN = writable(false);
 export const USER_ROLE = writable('');
 export const USER_ID = writable('');
-export const SHOPPING_CART = new Map();
+export const SHOPPING_CART = writable(new Map());
 
 // Use the persistBrowserSession function to make them persist in session storage
 export const PERSIST_LOGGED_IN = persistBrowserSession(LOGGED_IN, 'LOGGED_IN');
