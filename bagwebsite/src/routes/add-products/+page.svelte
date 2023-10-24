@@ -76,7 +76,6 @@
 				<label for="image">Image URL:</label><br />
 				<input class="input" type="text" id="image" bind:value={image_path} required /><br />
 				<br />
-				<button type="submit">Add Product</button>
 			</form>
 		</div>
 		<div />

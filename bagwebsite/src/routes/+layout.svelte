@@ -8,8 +8,10 @@
 	import '../app.postcss';
 	import { AppShell, AppBar, Avatar } from '@skeletonlabs/skeleton';
 	import Logo from '$lib/Images/logo.png';
-	import { APP_NAME } from '../lib/global';
 
+	import { signOut } from '../API/supabaseAPI';
+
+	import { APP_NAME } from '../lib/global';
 	import { LOGGED_IN, USER_ROLE } from '../lib/global';
 
 	let currentUserRole: string;
@@ -23,6 +25,7 @@
 	});
 
 	function handleLogout() {
+		signOut();
 		LOGGED_IN.set(false);
 	}
 </script>

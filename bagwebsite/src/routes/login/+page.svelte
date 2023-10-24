@@ -1,15 +1,25 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { LOGGED_IN } from '../../lib/global';
+	import { LOGGED_IN, USER_ROLE, USER_ID } from '../../lib/global';
+	import { signIn } from '../../API/supabaseAPI'; // Import your Supabase API functions
 
 	let email = '';
 	let password = '';
 	let msg = '';
 
 	// User login
-	function handleLogin() {
-		LOGGED_IN.set(true);
-		goto('/home');
+	async function handleLogin() {
+		// Call your signIn function to authenticate the user
+		const { data, error } = await signIn(email, password);
+
+		if (error) {
+			msg = 'Login failed. Please check your email and password.';
+			msg = error.message;
+		} else if (data) {
+			// Authentication was successful
+			LOGGED_IN.set(true);
+			goto('/home');
+		}
 	}
 </script>
 
@@ -22,10 +32,10 @@
 		<div class="card p-4">
 			<section class="p-4">
 				<form on:submit|preventDefault={handleLogin}>
-					<label for="label">Email:</label><br />
+					<label for="email">Email:</label><br />
 					<input class="input" type="text" id="email" bind:value={email} /><br /><br />
 
-					<label for="label">Password:</label><br />
+					<label for="password">Password:</label><br />
 					<input class="input" type="password" id="password" bind:value={password} />
 				</form>
 			</section>

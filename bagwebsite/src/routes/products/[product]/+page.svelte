@@ -1,6 +1,6 @@
 <!-- Script -->
 <script>
-	import { getProductById, handleApiError } from '../../../API/supabaseAPI';
+	import { getProductById } from '../../../API/supabaseAPI';
 	import { onMount } from 'svelte';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
