@@ -1,7 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { LOGGED_IN, USER_ROLE, USER_ID } from '../../lib/global';
-	import { signIn } from '../../API/supabaseAPI'; // Import your Supabase API functions
+	import { signIn,  } from '../../API/supabaseAPI'; // Import your Supabase API functions
 
 	let email = '';
 	let password = '';
@@ -18,6 +18,7 @@
 		} else if (data) {
 			// Authentication was successful
 			LOGGED_IN.set(true);
+			USER_ROLE.set()
 			goto('/home');
 		}
 	}

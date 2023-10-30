@@ -51,7 +51,7 @@
 			<div class="card p-4">
 				<img src={product.image_path} alt={product.name} class="product-image" />
 				<p class="text-sm">{product.description}</p>
-				<p class="text-lg font-bold text-primary-500">${product.price.toFixed(2)}</p>
+				<p class="text-lg font-bold text-primary-500">R {product.price.toFixed(2)}</p>
 				<p class="text-sm text-gray-500">{product.category}</p>
 				<button type="button" class="btn variant-ghost-primary m-4" on:click={addToCart}>
 					Add to Cart
@@ -60,14 +60,3 @@
 		{/if}
 	</div>
 </div>
-
-<!-- CSS -->
-<style>
-	/* Define the CSS class for the product images */
-	.product-image {
-		max-width: 200px; /* Set the maximum width */
-		height: auto; /* Maintain the aspect ratio */
-		display: block; /* Remove extra space below the image */
-		margin: 0 auto; /* Center the image horizontally */
-	}
-</style>

@@ -11,8 +11,10 @@
 
 	import { signOut } from '../API/supabaseAPI';
 
-	import { APP_NAME } from '../lib/global';
+	import { APP_NAME, SHOPPING_CART } from '../lib/global';
 	import { LOGGED_IN, USER_ROLE } from '../lib/global';
+
+	let btnStyle = 'btn variant-soft mr-4';
 
 	let currentUserRole: string;
 	USER_ROLE.subscribe((value) => {
@@ -25,6 +27,7 @@
 	});
 
 	function handleLogout() {
+		$SHOPPING_CART.clear();
 		signOut();
 		LOGGED_IN.set(false);
 	}
@@ -38,36 +41,32 @@
 		<AppBar>
 			<svelte:fragment slot="lead">
 				<a href="/"><Avatar src={Logo} width="w-10" rounded="rounded-full" /></a>
+				<strong class="text-xl uppercase ml-4 mr-24">{APP_NAME}</strong>
 			</svelte:fragment>
-			<strong class="text-xl uppercase">{APP_NAME}</strong>
+
+			{#if isLoggedIn}
+				<a href="/home" class={btnStyle}>Home </a>
+				<a href="/products" class={btnStyle}>Browse Products</a>
+				{#if currentUserRole === 'Owner' || currentUserRole === 'Employee'}
+					<li><a href="/add-products" class={btnStyle}>Add Products</a></li>{/if}
+				{#if currentUserRole === 'Owner'}
+					<li><a href="/add-employees" class={btnStyle}>Add Employees</a></li>{/if}
+
+				<a href="/cart" class={btnStyle}>Cart</a>
+			{/if}
 			<svelte:fragment slot="trail">
 				<!-- AppBar links -->
+
 				{#if $LOGGED_IN}
 					Hello, {$USER_ROLE}
+					<a href="/profile-home" class="{btnStyle} ml-8">Profile</a>
+					<a href="/" class={btnStyle} on:click={handleLogout}>Logout</a>
 				{/if}
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
 
 	<!--AppBar-->
-
-	{#if isLoggedIn}
-		<AppBar>
-			<svelte:fragment slot="trail">
-				<li><a href="/home">Home</a></li>
-				<li><a href="/products">Browse Products</a></li>
-				{#if currentUserRole === 'Owner' || currentUserRole === 'Employee'}
-					<li><a href="/add-products">Add Products</a></li>
-				{/if}
-				{#if currentUserRole === 'Owner'}
-					<li><a href="/add-employees">Add Employees</a></li>
-				{/if}
-				<li><a href="/profile-home">Profile</a></li>
-				<li><a href="/cart">Cart</a></li>
-				<li><a href="/" on:click={handleLogout}>Logout</a></li>
-			</svelte:fragment>
-		</AppBar>
-	{/if}
 
 	<!-- Router Slot -->
 	<slot />
